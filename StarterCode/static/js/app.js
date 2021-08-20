@@ -1,4 +1,4 @@
- // Fetch the JSON data and console log it
+ //1. Use the D3 library to read in samples.json.
 function init(){
     var selector = d3.select("#selDataset");
 
@@ -24,13 +24,39 @@ function init(){
     var samples = data.samples;
     var filterArray = samples.filter(sampleObject => sampleObject.id == sample);
     var result = filterArray[0];
-    var sampleValues = result.sample_values.slice(0, 10); // getting the first 10 samples 
-    var otuIds = result.otu_ids.slice(0, 10); //getting only top 10 otuIds
+    var sampleValues = result.sample_values
+    var otuIds = result.otu_ids
     var otuLabels = result.otu_labels;   
+        // console.log(otuLabels)
 
+//2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
+
+    var trace = {
+        x: sampleValues.slice(0,10).reverse(),
+        y: otuIds.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
+        // name: 'SF Zoo',
+        orientation: 'h',
+        text: otuLabels.slice(0,10).reverse(),
+        marker: {
+        color: 'rgba(55,128,191,0.6)',
+        width: 1
+        },
+        type: 'bar'
+        
+    };
+        
+    // create data variable
+    var data = [trace];
+
+    var layout = {
+        title: 'Top Ten OTUs for Individual ' +sample,
+        font: { color: "black", family: "'Arial, sans-serif;',size: 12," },
+        // margin: {t:10}
+    };
+    Plotly.newPlot('bar', data, layout);
     
-    
-// Build a Bubble Chart
+// 3. Create a bubble chart that displays each sample.
+
     var trace1 = {
         x: otuIds,
         y: sampleValues,
@@ -43,16 +69,16 @@ function init(){
         }
         
     };
-    var data = [trace1];
-    var layout = {
+    var data1 = [trace1];
+    var layout1 = {
         title: 'Bacteria Cultures per Sample',
         showlegend: false,
         hovermode: 'closest',
         xaxis: {title:"OTU ID " +sample},
         font: { color: "black", family: "'Arial, sans-serif;',size: 12," },
-        margin: {t:30}
+        margin: {t:40}
     };
-    Plotly.newPlot('bubble', data, layout); 
+    Plotly.newPlot('bubble', data1, layout1); 
 
 })
 ;}
