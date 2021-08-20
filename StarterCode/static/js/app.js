@@ -77,7 +77,9 @@ function init(){
         hovermode: 'closest',
         xaxis: {title:"OTU ID " +sample},
         font: { color: "black", family: "'Arial, sans-serif;',size: 12," },
-        margin: {t:40}
+        margin: {t:40},
+        height: 400,
+        width: 800
     };
     Plotly.newPlot('bubble', data1, layout1); 
     });
@@ -94,10 +96,42 @@ function init(){
         Object.entries(result).forEach(([key, value]) => {
             panelText.append("p").text(`${key.toUpperCase()}: ${value}`)
         })
-    
+    // 5. Adapt the Gauge Chart from https://plot.ly/javascript/gauge-charts/ to plot the weekly washing frequency of the individual.
 
-  });
-}
+        var data = [
+            {
+              domain: { x: [0, 1], y: [0, 1] },
+              value: result.wfreq,
+              title: 'Belly Button Washing Frequency<br> Scrubs per Week',
+              titlefont: {family: '"Arial, Helvetica, sans-serif'},
+              type: "indicator",
+              mode: "number+gauge",
+              gauge: { axis: {color:"FF4C33", range: [null, 9], },
+                   steps: [
+                    {range: [0, 1], color: "#FFAF33"},
+                    {range: [1, 2], color: "FFAF33"},
+                    {range: [2, 3], color: "FFAF33"},
+                    {range: [3, 4], color: "FFAF33"},
+                    {range: [4, 5], color: "FFAF33"},
+                    {range: [5, 6], color: "FFAF33"},
+                    {range: [6, 7], color: "FFAF33"},
+                    {range: [7, 8], color: "FFAF33"},
+                    {range: [8, 9], color: "FFAF33"}
+                  ]}
+              
+            }
+          ];
+        
+          var layout = {
+            width: 500,
+            height: 400,
+            font: { color: "black", family: "Arial, sans-serif" }
+           };
+        
+          
+          Plotly.newPlot("gauge", data, layout);
+          });
+        }
 
 function optionChanged(newSample) {
     // Fetch new data each time a new sample is selected
