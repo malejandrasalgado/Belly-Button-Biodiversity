@@ -13,6 +13,7 @@ function init(){
         });
     const firstbutton = subjectID[0];
     buildCharts(firstbutton);
+    updateMetadata(firstbutton);
        });
 }
 
@@ -79,9 +80,32 @@ function init(){
         margin: {t:40}
     };
     Plotly.newPlot('bubble', data1, layout1); 
+    });
+    }
 
-})
-;}
+ // 4. Display the sample metadata, i.e., an individual's demographic information.
+ function updateMetadata(sample) {
+    d3.json("samples.json").then((data) => {
+        var metadata = data.metadata;
+        var filterArray = metadata.filter(sampleObject => sampleObject.id == sample);
+        var result = filterArray[0];
+        var panelText = d3.select("#sample-metadata");
+        panelText.html("");
+        Object.entries(result).forEach(([key, value]) => {
+            panelText.append("p").text(`${key.toUpperCase()}: ${value}`)
+        })
+    
+
+  });
+}
+
+function optionChanged(newSample) {
+    // Fetch new data each time a new sample is selected
+    buildCharts(newSample);
+    updateMetadata(newSample);
+  };
+
+
 
   
-  init()
+  init();
