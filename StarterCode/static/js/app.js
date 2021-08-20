@@ -15,25 +15,30 @@ function init(){
     buildCharts(firstbutton);
        });
 }
-  
+
+
+// define varialbes to build charts 
+
   function buildCharts(sample) {    
     d3.json("samples.json").then((data) => {
     var samples = data.samples;
     var filterArray = samples.filter(sampleObject => sampleObject.id == sample);
     var result = filterArray[0];
-    var sample_values = result.sample_values;
-    var otu_ids = result.otu_ids;
-    var otu_labels = result.otu_labels;   
+    var sampleValues = result.sample_values.slice(0, 10); // getting the first 10 samples 
+    var otuIds = result.otu_ids.slice(0, 10); //getting only top 10 otuIds
+    var otuLabels = result.otu_labels;   
+
+    
     
 // Build a Bubble Chart
     var trace1 = {
-        x: otu_ids,
-        y: sample_values,
+        x: otuIds,
+        y: sampleValues,
         mode: 'markers',
-        text: otu_labels,
+        text: otuLabels,
         marker: {
-            size: sample_values,
-            color: otu_ids,
+            size: sampleValues,
+            color: otuIds,
             colorscale: "Jet"
         }
         
