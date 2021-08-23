@@ -116,7 +116,7 @@ function init(){
                     {range: [5, 6], color: "ffc778"},
                     {range: [6, 7], color: "ffc370"},
                     {range: [7, 8], color: "ffbf68"},
-                    {range: [8, 9], color: "FFA500"}
+                    {range: [8, 9], color: "ffb857"}
                   ]}
               
             }
