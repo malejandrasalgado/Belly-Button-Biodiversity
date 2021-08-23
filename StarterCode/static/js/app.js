@@ -96,7 +96,7 @@ function init(){
         Object.entries(result).forEach(([key, value]) => {
             panelText.append("p").text(`${key.toUpperCase()}: ${value}`)
         })
-    // 5. Adapt the Gauge Chart from https://plot.ly/javascript/gauge-charts/ to plot the weekly washing frequency of the individual.
+    // 5. Adapt the Gauge Chart from https://plot.ly/javascript/gauge-charts/ to plot the weekly washing frequency of the individual.FFAF33 FFCD80 FFB52E
 
         var data = [
             {
@@ -108,15 +108,15 @@ function init(){
               mode: "number+gauge",
               gauge: { axis: {color:"FF4C33", range: [null, 9], },
                    steps: [
-                    {range: [0, 1], color: "#FFAF33"},
-                    {range: [1, 2], color: "FFAF33"},
-                    {range: [2, 3], color: "FFAF33"},
-                    {range: [3, 4], color: "FFAF33"},
-                    {range: [4, 5], color: "FFAF33"},
-                    {range: [5, 6], color: "FFAF33"},
-                    {range: [6, 7], color: "FFAF33"},
-                    {range: [7, 8], color: "FFAF33"},
-                    {range: [8, 9], color: "FFAF33"}
+                    {range: [0, 1], color: "ffd799"}, 
+                    {range: [1, 2], color: "ffd390"},
+                    {range: [2, 3], color: "ffd290"},
+                    {range: [3, 4], color: "ffcf88"},
+                    {range: [4, 5], color: "ffcb80"},
+                    {range: [5, 6], color: "ffc778"},
+                    {range: [6, 7], color: "ffc370"},
+                    {range: [7, 8], color: "ffbf68"},
+                    {range: [8, 9], color: "FFA500"}
                   ]}
               
             }
