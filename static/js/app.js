@@ -1,4 +1,4 @@
- //1. Use the D3 library to read in samples.json.
+//1. Use the D3 library to read in samples.json.
 function init(){
     var selector = d3.select("#selDataset");
 
@@ -106,17 +106,17 @@ function init(){
               titlefont: {family: '"Arial, Helvetica, sans-serif'},
               type: "indicator",
               mode: "number+gauge",
-              gauge: { axis: {color:"FF4C33", range: [null, 9], },
+              gauge: { axis: {color:"FF4C33", range: [null, 9], dtick:1},
                    steps: [
-                    {range: [0, 1], color: "ffd799"}, 
-                    {range: [1, 2], color: "ffd390"},
-                    {range: [2, 3], color: "ffd290"},
-                    {range: [3, 4], color: "ffcf88"},
-                    {range: [4, 5], color: "ffcb80"},
-                    {range: [5, 6], color: "ffc778"},
-                    {range: [6, 7], color: "ffc370"},
-                    {range: [7, 8], color: "ffbf68"},
-                    {range: [8, 9], color: "ffb857"}
+                    {range: [0, 1], color: "e0e6e8"}, 
+                    {range: [1, 2], color: "dce2e4"},
+                    {range: [2, 3], color: "d7dfe1"},
+                    {range: [3, 4], color: "c9d3d6"},
+                    {range: [4, 5], color: "c4d0d3"},
+                    {range: [5, 6], color: "c0cccf"},
+                    {range: [6, 7], color: "b6c4c8"},
+                    {range: [7, 8], color: "b2c1c5"},
+                    {range: [8, 9], color: "adbdc1"}
                   ]}
               
             }
